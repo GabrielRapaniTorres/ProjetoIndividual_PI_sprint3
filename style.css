@@ -1,0 +1,60 @@
+body {
+    font-family: sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 102vh;
+    margin: 0;
+}
+
+.header {
+    background-color: #3a3a6e;
+    color: #fff;
+    padding: 15px 20px;
+    width: 100%;
+    display: flex;
+    font-family: "Rubik", system-ui;
+    box-sizing: border-box;
+}
+
+
+
+.header .logo {
+    font-size: 25px;
+    margin-top: 10px;
+}
+
+.header nav {
+    margin-left: auto;
+}
+
+.header nav ul {
+    list-style: outside;
+    display: flex;
+    gap: 40px;
+}
+
+.header nav a {
+    color: #f0f0f0;
+    font-size: 20px;
+}
+
+.header nav a:hover {
+    color: #ADD8E6;
+    text-decoration: underline;
+    transition: color 0.4s ease;
+}
+
+.company {
+    font-style: italic;
+    color: white;
+}
+
+.company:hover {
+    transition: color 0.4s ease;
+    text-decoration: underline;
+    color: rgb(7, 7, 51);
+}
