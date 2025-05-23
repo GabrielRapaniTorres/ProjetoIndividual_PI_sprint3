@@ -9,13 +9,14 @@ body {
     color: #e0e0e0;
     /* Light gray text for contrast */
     line-height: 1.6;
+    
 }
 
 /* Header */
 .header {
     background-color: #16213e;
     /* Slightly darker shade for header */
-    padding: 15px 0;
+    padding: 5px ;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     /* Subtle shadow for depth */
 }
@@ -29,10 +30,14 @@ body {
     padding: 0 20px;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 .header .titulo {
-    font-size: 2.5em;
-    font-weight: 700;
-    color: #0f3460;
+    font-size: 30px;
+    font-family: "Bebas Neue", sans-serif;
+    color: white;
+    font-weight: 400;
+    font-style: normal;
     /* A vibrant blue for the brand name */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
@@ -63,6 +68,7 @@ body {
 
 .header .navbar li.agora a {
     color: #e94560;
+    text-decoration: overline;
     /* Highlight for the current page */
     font-weight: 700;
 }
@@ -89,20 +95,20 @@ body {
 }
 
 .login .card-login {
-    background-color: #0f3460;
+    background-color: #16213eda;
     /* Darker blue for the card background */
     padding: 40px;
     border-radius: 15px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
     /* More prominent shadow for the card */
     text-align: center;
-    border: 1px solid rgba(233, 69, 96, 0.3);
+    border: 1px solid black;
     /* Subtle border matching accent color */
 }
 
 .login .card-login h2 {
     font-size: 2.2em;
-    color: #e94560;
+    color: white;
     margin-bottom: 30px;
     font-weight: 700;
 }
@@ -257,6 +263,65 @@ body {
     background-color: #1a1a2e;
     /* Input background */
     color: #e0e0e0;
-    font-size: 1em;
+    font-size: 15px;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
+
+
+body{
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+      
+    }
+    .apresentacao{
+      width: calc(50%);
+    justify-self: center;
+    align-self: center;
+    height: 400px;
+    background-color: #16213ece;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 5px 7px 8px 5px rgba(0, 0, 0, 0.623);
+    font-family: monospace;
+    margin-bottom: 20px;
+    
+    }
+    .apresentacao h1{
+    align-self: center;
+    margin-left: calc(29%);
+    
+    }
+    .bdy{
+    
+    background-image: url(assets/imgs/luxa.org-opacity-changed-.__image.webp);
+    
+    }
+    .apresentacao h2{
+    margin-left: calc(5%);
+    
+    
+    }
+    .apresentacao p{
+    margin-left: calc(5%);
+    border-bottom: solid 1px black;
+    
+    }
+    
+    footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 10px;
+    gap: 20px;
+    width: 90%;
+    margin-left: 50px;
+    font-size: 10px;
+    border-top: solid 1px black;
+    height: 10px;
+    
+    }
+    
+    
