@@ -102,7 +102,6 @@ body {
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
     /* More prominent shadow for the card */
     text-align: center;
-    border: 1px solid black;
     /* Subtle border matching accent color */
 }
 
