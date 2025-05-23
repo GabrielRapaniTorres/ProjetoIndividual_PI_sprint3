@@ -6,60 +6,67 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>VibeTrack | Login</title>
+    <title>AquaTech | Login</title>
 
     <script src="./js/sessao.js"></script>
 
-    <link rel="stylesheet" href="./css/estilo.css">
-    <link rel="icon" href="https://images.vexels.com/media/users/3/143593/isolated/preview/31c02abff8ad83f6cd9eaa8c33106912-semicolcheia.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="./assets/icon/favicon2.ico">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
 </head>
 
 <body>
 
-    <header class="header">
-        <span class="logo">VibeTrack</span>
-        <img style="height: 40px; margin-left: 40px;"
-            src="https://images.vexels.com/media/users/3/143593/isolated/preview/31c02abff8ad83f6cd9eaa8c33106912-semicolcheia.png"
-            alt="">
-        <nav>
-            <ul>
-                <li><a href="#">Início</a></li>
-                <li><a href="sobre.html">Sobre
-                        mim</a></li>
-                <li><a href="login.html">Login</a>
+    <!--Header-->
+
+    <div class="header">
+        <div class="container">
+            <h1 class="titulo">VibeTrack</h1>
+            <ul class="navbar">
+                <li>
+                    <a href="index.html">Inicial</a>
+                </li>
+                <li>
+                    <a href="simulador.html">Simulador</a>
+                </li>
+                <li>|</li>
+                <li class="agora">
+                    <a href="#">Login</a>
+                </li>
+                <li>
+                    <a href="cadastro.html">Cadastro</a>
                 </li>
             </ul>
-        </nav>
-    </header>
-
-    <div class="container">
-        <div class="form-container sign-in-container">
-            <h1>Login</h1>
-            <div class="social-container">
-                <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="social"><i class="fab fa-google"></i></a>
-                <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-            </div>
-            <span>ou use sua conta</span>
-            <input type="email" placeholder="Email" id="emailLogin" />
-            <input type="password" placeholder="Senha" id="senhaLogin" />
-            <a class="esqueceu" href="#">Esqueceu sua senha?</a>
-            <button onclick="signUpButton()">ENTRAR</button>
         </div>
+    </div>
 
-        <div class="overlay-container">
-            <div class="overlay">
-                <div class="overlay-panel overlay-right">
-                    <h1>Olá, amigo!</h1>
-                    <p>Caso ainda não tenha uma conta clique em REGISTRAR<br><br><a class="company" href="#">
-                            VibeTrack</a></p>
 
-                            <a href="cadastro.html"><button class="ghost">aREGISTRAR</button></a>
-
+    <div class="login">
+        <div class="alerta_erro">
+            <div class="card_erro" id="cardErro">
+                <span id="mensagem_erro"></span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="card card-login">
+                <h2>Olá de volta!</h2>
+                <div class="formulario">
+                    <div class="campo">
+                        <span>E-mail:</span>
+                        <input id="email_input" type="text" placeholder="Login">
+                    </div>
+                    <div class="campo">
+                        <span>Senha:</span>
+                        <input id="senha_input" type="password" placeholder="******">
+                    </div>
+                    <button class="botao" onclick="entrar()">Entrar</button>
                 </div>
+
+                <div id="div_aguardar" class="loading-div">
+                    <img id="loading-gif">
+                </div>
+
+                <div id="div_erros_login"></div>
             </div>
         </div>
     </div>
@@ -71,7 +78,7 @@
 <script>
 
 
-    function signUpButton() {
+    function entrar() {
         aguardar();
 
         var emailVar = email_input.value;
