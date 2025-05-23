@@ -56,7 +56,16 @@ create table medida (
 	FOREIGN KEY (fk_aquario) REFERENCES aquario(id)
 );
 
-insert into empresa (razao_social, codigo_ativacao) values ('Empresa 1', 'ED145B');
-insert into empresa (razao_social, codigo_ativacao) values ('Empresa 2', 'A1B2C3');
-insert into aquario (descricao, fk_empresa) values ('Aquário de Estrela-do-mar', 1);
-insert into aquario (descricao, fk_empresa) values ('Aquário de Peixe-dourado', 2);
+insert into empresa (razao_social, codigo_ativacao) values ('primeiroEstilo', 'rock');
+insert into empresa (razao_social, codigo_ativacao) values ('segundoEstilo', 'sertanejo');
+insert into empresa (razao_social, codigo_ativacao) values ('terceiroEstilo', 'classico');
+insert into empresa (razao_social, codigo_ativacao) values ('quartoEstilo', 'mpb');
+insert into empresa (razao_social, codigo_ativacao) values ('quintoEstilo', 'alternativo');
+insert into empresa (razao_social, codigo_ativacao) values ('sextoEstilo', 'jazz');
+
+insert into aquario (descricao, fk_empresa) values ('primeiroEstilo', 1);
+insert into aquario (descricao, fk_empresa) values ('segundoEstilo', 2);
+insert into aquario (descricao, fk_empresa) values ('terceiroEstilo', 3);
+insert into aquario (descricao, fk_empresa) values ('quartoEstilo', 4);
+insert into aquario (descricao, fk_empresa) values ('quintoEstilo', 5);
+insert into aquario (descricao, fk_empresa) values ('sextoEstilo', 6);
