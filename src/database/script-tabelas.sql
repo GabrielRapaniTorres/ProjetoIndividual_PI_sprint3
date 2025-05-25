@@ -56,6 +56,7 @@ create table medida (
 	FOREIGN KEY (fk_aquario) REFERENCES aquario(id)
 );
 
+
 insert into empresa (razao_social, codigo_ativacao) values ('primeiroEstilo', 'rock');
 insert into empresa (razao_social, codigo_ativacao) values ('segundoEstilo', 'sertanejo');
 insert into empresa (razao_social, codigo_ativacao) values ('terceiroEstilo', 'classico');
@@ -69,3 +70,43 @@ insert into aquario (descricao, fk_empresa) values ('terceiroEstilo', 3);
 insert into aquario (descricao, fk_empresa) values ('quartoEstilo', 4);
 insert into aquario (descricao, fk_empresa) values ('quintoEstilo', 5);
 insert into aquario (descricao, fk_empresa) values ('sextoEstilo', 6);
+
+select * from usuario;
+
+delete from usuario where id = 7;
+
+insert into empresa(razao_social,cnpj,codigo_ativacao)values('estilo 6', null, 'jazz');
+
+select * from empresa;
+
+update empresa set codigo_ativacao = 'classico' where id = 3;
+
+update empresa set razao_social = 'estilo 3' where id = 3;
+
+select * from usuario;
+
+select * from aquario;
+
+insert into aquario(descricao, fk_empresa)
+values('sextoEstilo', 6);
+
+update aquario set descricao = 'primeiroEstilo' where id = 1;
+
+delete from usuario where id = 10;
+
+CREATE TABLE resposta_quiz (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    id_usuario INT,
+    id_pergunta INT NOT NULL,
+    resposta_escolhida INT NOT NULL,
+    correta BOOLEAN NOT NULL,
+    data_hora DATETIME DEFAULT CURRENT_TIMESTAMP,
+    
+    CONSTRAINT fk_usuario FOREIGN KEY (id_usuario) REFERENCES usuario(id)
+);
+
+truncate table resposta_quiz;
+
+select * from resposta_quiz;
+DESCRIBE resposta_quiz;
+select * from usuario;
