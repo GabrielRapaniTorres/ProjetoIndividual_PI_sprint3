@@ -11,13 +11,12 @@ function salvarResposta(idUsuario, idPergunta, respostaEscolhida, correta) {
 function obterEstatisticas(idPergunta) {
     const instrucaoSql = `
         SELECT 
-            resposta_escolhida,
-            COUNT(*) AS quantidade,
-            SUM(correta) AS acertos
+            correta,
+            COUNT(*) AS quantidade
         FROM resposta_quiz
-        WHERE fk_pergunta = ${idPergunta}
-        GROUP BY resposta_escolhida
-        ORDER BY resposta_escolhida;
+        WHERE id_pergunta = ${idPergunta}
+        GROUP BY correta
+        ORDER BY correta;
     `;
     return database.executar(instrucaoSql);
 }
