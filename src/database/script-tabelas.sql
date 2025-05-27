@@ -73,11 +73,26 @@ insert into aquario (descricao, fk_empresa) values ('sextoEstilo', 6);
 
 select * from usuario;
 
+delete from usuario where id = 7;
+
+insert into empresa(razao_social,cnpj,codigo_ativacao)values('estilo 6', null, 'jazz');
+
 select * from empresa;
+
+update empresa set codigo_ativacao = 'classico' where id = 3;
+
+update empresa set razao_social = 'estilo 3' where id = 3;
 
 select * from usuario;
 
 select * from aquario;
+
+insert into aquario(descricao, fk_empresa)
+values('sextoEstilo', 6);
+
+update aquario set descricao = 'primeiroEstilo' where id = 1;
+
+delete from usuario where id = 10;
 
 CREATE TABLE resposta_quiz (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -95,3 +110,15 @@ truncate table resposta_quiz;
 select * from resposta_quiz;
 DESCRIBE resposta_quiz;
 select * from usuario;
+
+delete from usuario where id = 2;
+
+select * from empresa;
+
+create view vw_acertos as
+select us.nome,rq.id_pergunta,rq.resposta_escolhida,rq.correta,rq.data_hora
+ from resposta_quiz rq join
+ usuario us 
+ on us.id = id_usuario;
+ 
+ select * from vw_acertos;
