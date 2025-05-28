@@ -51,6 +51,7 @@
                 <p id="feedback-mensagem"></p>
                 <button id="proxima-pergunta-btn">Próxima Pergunta</button>
                 <div class="grafico-container">
+                    <p>acertos da comunidade:</p>
                     <canvas id="grafico1"></canvas>
 
                 </div>
@@ -75,8 +76,7 @@
             const resultadoFinal = document.getElementById('resultado-final');
             const mensagemResultado = document.getElementById('mensagem-resultado');
             const respostaBotoes = document.querySelectorAll('.resposta-btn');
-            let chart; // Variável global para o gráfico
-
+            let chart; 
 
             async function atualizarGrafico(idPergunta) {
                 const ctx = document.getElementById('grafico1').getContext('2d');
