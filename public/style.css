@@ -70,7 +70,6 @@ body {
 }
 
 .header .navbar li.agora a {
-
     color: #1f3a61f6;
     text-decoration: overline;
     font-weight: 700;
@@ -420,7 +419,6 @@ footer {
     border-radius: 10px;
     cursor: pointer;
     font-size: 19px;
-    /* antes 1.2em */
     margin-top: 20px;
     font-weight: 700;
     box-shadow: 0 4px 12px rgba(37, 99, 235, 0.6);
@@ -446,14 +444,12 @@ footer {
 #resultado-final h2 {
     color: #60a5fa;
     font-size: 40px;
-    /* antes 2.5em */
     margin-bottom: 15px;
     letter-spacing: 0.04em;
 }
 
 #resultado-final p {
     font-size: 22px;
-    /* antes 1.4em */
     color: #cbd5e1;
     font-weight: 700;
     margin-bottom: 25px;
@@ -468,7 +464,6 @@ footer {
     border-radius: 12px;
     cursor: pointer;
     font-size: 19px;
-    /* antes 1.2em */
     font-weight: 700;
 
     box-shadow: 0 5px 20px rgba(1, 13, 37, 0.596);
@@ -490,7 +485,6 @@ footer {
     border-radius: 12px;
     cursor: pointer;
     font-size: 21px;
-    /* antes 1.3em */
     font-weight: 700;
     margin-top: 50px;
     box-shadow: 0 5px 20px rgba(10, 45, 119, 0.61);
