@@ -5,9 +5,10 @@
     <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="../style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AquaTech | Avisos</title>
-    
+
     <script src="../js/sessao.js"></script>
     <script src="./../js/alerta.js"></script>
 
@@ -16,72 +17,136 @@
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
 </head>
-
-<body onload="validarSessao(), atualizarFeed()" style="background-color: #161618;">
-
-    <div class="janela">
+<style>
 
 
-        <div class="header-left">
+.fundo{
 
-            <h1>AquaTech</h1>
+    background-image: url(../assets/imgs/luxa.org-opacity-changed-._van-gogh-noite-estrelada-sobre-rodano-d.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 
-            <div class="hello">
-                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+}
+.janela{
+    color: #cbccd1;
+    align-self: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    justify-self: center;
+    padding: 40px;
+    width: 80%;
+    height: max-content;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #1a1a2ed8;
+    box-shadow: 5px 2px 8px rgba(5, 7, 37, 0.753);
+}
+.header-left {
+    width: 30%;
+    padding: 20px;
+    float: left;
+}
+.header-left h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+.header-left .hello {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+.header {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+.navbar {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+</style>
+<body onload="validarSessao(), atualizarFeed()">
+
+    <div class="fundo">
+
+
+        <div class="header">
+            <div class="container">
+                <h1 class="titulo">VibeTrack</h1>
+                <ul class="navbar">
+                    <li>
+                        <a href="../index.html">inicio</a>
+                    </li>
+                    <li>
+                        <a href="../simulador.html">Sobre</a>
+                    </li>
+                    <li>
+                        <a href="../login.html">Login</a>
+                    </li>
+                    <li>
+                        <a href="../cadastro.html">Cadastro</a>
+                    </li>
+                    <li>
+                        <a href="cards.html">quiz</a>
+                    </li>
+                    <li>
+                        <a href="dashboard.html">dashboard</a>
+                    </li>
+                    <li class="agora">
+                        <a href="mural.html">forum</a>
+                    </li>
+                </ul>
             </div>
-
-            <div class="btn-nav-white">
-                <a href="cards.html">
-                    <h3>Aquários</h3>
-                </a>
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="./dashboard.html">
-                    <h3>Gráficos</h3>
-                </a>
-            </div>
-
-            <div class="btn-nav">
-                <h3>Mural de Avisos</h3>
-            </div>
-
-            <div class="btn-logout" onclick="limparSessao()">
-                <h3>Sair</h3>
-            </div>
-
         </div>
-
-        <div class="dash-right">
-
-
-            <div class="avisos">
-                <div id="alerta">
+    
+        <div class="janela">
+    
+    
+            <div class="header-left">
+    
+                <h1>VibeTrack</h1>
+    
+                <div class="hello">
+                    <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
                 </div>
-                <div class="container">
-                    <h1>Publicar um aviso</h1>
-                    <div class="div-form">
-                        <form id="form_postagem" method="post" onsubmit="return publicar()">
-                            <label>
-                                Título:
-                                <br>
-                                <input name="titulo" id="titulo" maxlength="100" type="text">
-                            </label>
-                            <br>
-                            <br>
-                            <label>
-                                Descrição (máximo de 250 caracteres):
-                                <br>
-                                <textarea name="descricao" id="textarea_descricao" maxlength="250" rows="5"></textarea>
-                            </label>
-                            <br>
-                            <br>
-                            <button>Enviar</button>
-                        </form>
+    
+    
+            </div>
+    
+            <div class="dash-right">
+    
+    
+                <div class="avisos">
+                    <div id="alerta">
                     </div>
-                    <h1>Mural de Avisos</h1>
-                    <div class="div-results">
-                        <div id="feed_container" class="feed-container">
+                    <div class="container">
+                        <div class="div-form">
+                            <form id="form_postagem" method="post" onsubmit="return publicar()">
+                                <label>
+                                    Título:
+                                    <br>
+                                    <input name="titulo" id="titulo" maxlength="100" type="text">
+                                </label>
+                                <br>
+                                <br>
+                                <label>
+                                    Descrição (máximo de 250 caracteres):
+                                    <br>
+                                    <textarea name="descricao" id="textarea_descricao" maxlength="250" rows="5"></textarea>
+                                </label>
+                                <br>
+                                <br>
+                                <button>Enviar</button>
+                            </form>
+                        </div>
+                        <h1>Mural de Avisos</h1>
+                        <div class="div-results">
+                            <div id="feed_container" class="feed-container">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -90,6 +155,15 @@
     </div>
 
 
+    <footer>
+
+        <p>©VibeTrack 2025</p>
+        <div>
+            <h2>Desenvolvido por Gabriel Rapani Torres, com o auxilio dos professores (SPtech)</h2>
+        </div>
+        <p>version 1.0</p>
+    </footer>
+
 
 
 </body>
@@ -97,7 +171,7 @@
 </html>
 
 <script>
-    
+
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
     function limparFormulario() {
