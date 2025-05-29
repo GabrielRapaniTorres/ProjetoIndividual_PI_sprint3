@@ -9,126 +9,203 @@
   <title>VibeTrack</title>
 
   <script src="./js/sessao.js"></script>
-<link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css" />
 
-<link rel="icon" href="assets/imgs/png-transparent-music-note-music-note-musical-notes-musical-design-symbol-sound-melody-music-notes-v.svg">
+  <link rel="icon"
+    href="assets/imgs/png-transparent-music-note-music-note-musical-notes-musical-design-symbol-sound-melody-music-notes-v.svg">
   <link rel="preconnect" href="https://fonts.gstatic.com" />
 </head>
 <style>
+  .cadContainer {
 
-.cadContainer{
 
-width: 500px;
-margin-top: 10px;
-margin-bottom: 10px;
-border-radius: 10px;
-border: 1 solid black;
-box-shadow: 5px 2px 8px 5px rgba(0, 0, 0, 0.753);
-background-color: #16213ece;
-align-self: center;
-justify-self: center;
+    font-family: "Cedarville Cursive", cursive;
+    background-color: #030811b0;
+    width: 500px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: 1 solid black;
+    box-shadow: 5px 2px 8px 5px rgba(0, 0, 0, 0.753);
+    align-self: center;
+    justify-self: center;
 
-}
+  }
 
+  .cadastro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 100px);
+    padding: 40px 20px;
+  }
+
+  .cadastro .container {
+    max-width: 450px;
+    width: 100%;
+  }
+
+  .cadastro .card-login {
+    background-color: #030811b0;
+    padding: 40px;
+    box-shadow: 5px 7px 8px 5px rgba(0, 0, 0, 0.623);
+    border-radius: 15px;
+    text-align: center;
+  }
+
+
+
+  .cadastro .card-cadastro h2 {
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .cadastro .formulario .campo {
+    margin-bottom: 25px;
+    text-align: left;
+  }
+
+  .cadastro .formulario .campo span {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 18px;
+    color: #e0e0e0;
+    font-weight: 500;
+  }
+
+  .cadastro .formulario .campo input {
+    width: calc(100% - 20px);
+    padding: 12px 10px;
+    border: 1px solid #0a1d36c2;
+    border-radius: 5px;
+    background-color: #1a1a2e;
+    color: #e0e0e0;
+    font-size: 19px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .cadastro .formulario .campo input:focus {
+    outline: none;
+    border-color: #0f3460;
+    box-shadow: 0 0 0 2px #1f3a61f6;
+  }
+
+  .cadastro .botao {
+    width: 100%;
+    padding: 15px;
+    font-family: "Cedarville Cursive", cursive;
+    font-weight: 400;
+    font-size: 1.2em;
+    font-style: normal;
+    background-color: #051120bb;
+    color: #e0e0e0;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 20px;
+  }
+
+  .cadastro .botao:hover {
+    background-color: #051120;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+  }
+
+  .cadastro span {
+    font-family: 'Courier New', Courier, monospace;
+  }
 </style>
+
 <body>
-<div class="bdy">
+  <div class="bdy">
 
 
-  
-  <body onload="listar()">
-    <!--header inicio-->
-    <div class="header">
-      <div class="container">
-        <h1 class="titulo">VibeTrack</h1>
-        <ul class="navbar">
-          <li>
-            <a href="index.html">inicio</a>
-          </li>
-          <li>
-            <a href="simulador.html">Sobre</a>
-          </li>
-          <li>
-            <a href="login.html">login</a>
-          </li>
-          <li class="agora">
-            <a href="#">Cadastro</a>
-          </li>
-        </ul>
+
+    <body onload="listar()">
+      <div class="header">
+        <div class="container">
+          <h1 class="titulo">VibeTrack</h1>
+          <ul class="navbar">
+            <li>
+              <a href="index.html">inicio</a>
+            </li>
+            <li>
+              <a href="simulador.html">Sobre</a>
+            </li>
+            <li>
+              <a href="login.html">login</a>
+            </li>
+            <li class="agora">
+              <a href="#">Cadastro</a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-    <!--header fim-->
-  
-    
-    <div class="cadContainer">
-      
-          
-          <div class="login">
-            <div class="alerta_erro">
-              <div class="card_erro" id="cardErro">
-                <span id="mensagem_erro"></span>
-              </div>
-            </div>
-            <div class="container">
-              <div class="card card-cadastro">
-                <h2>Bem-vindo!</h2>
-                <div class="formulario">
-                  <!--
-                                 Para inserir mais um campo, copie uma das inputs abaixo.
-                                 Assim que inserir vá para o script abaixo.
-                             -->
-                  <div class="campo">
-                    <span>estilo:</span>
-                    <select class="campo" id="codigo_input">
-                      <option value="rock">rock</option>
-                      <option value="sertanejo">sertanejo</option>
-                      <option value="classico">classico</option>
-                      <option value="mpb">mpb</option>
-                      <option value="alternativo">alternativo</option>
-                      <option value="jazz">jazz</option>yy
-                    </select>
-                  </div>
-                  <div class="campo">
-                    <span>Nome:</span>
-                    <input id="nome_input" type="text" placeholder="Seu nome" />
-                  </div>
-                  <div class="campo">
-                    <span>E-mail:</span>
-                    <input id="email_input" type="text" placeholder="meuemail@provedor.com" />
-                  </div>
-                  <div class="campo">
-                    <span>Senha:</span>
-                    <input id="senha_input" type="password" placeholder="******" />
-                  </div>
-                  <div class="campo">
-                    <span>Confirmação da Senha:</span>
-                    <input id="confirmacao_senha_input" type="password" placeholder="******" />
-                  </div>
-                  <button class="botao" onclick="cadastrar()">Cadastrar</button>
-                </div>
-                <div id="div_aguardar" class="loading-div">
-                  <img id="loading-gif" />
-                </div>
-        
-                <div id="div_erros_login"></div>
-              </div>
+      <div class="cadContainer">
+        <div class="cadastro">
+          <div class="alerta_erro">
+            <div class="card_erro" id="cardErro">
+              <span id="mensagem_erro"></span>
             </div>
           </div>
+          <div class="container">
+            <h2>Bem-vindo!</h2>
+            <div class="formulario">
+              <div class="campo">
+                <span>estilo:</span>
+                <select class="campo" id="codigo_input">
+                  <option value="rock">rock</option>
+                  <option value="sertanejo">sertanejo</option>
+                  <option value="classico">classico</option>
+                  <option value="mpb">mpb</option>
+                  <option value="alternativo">alternativo</option>
+                  <option value="jazz">jazz</option>yy
+                </select>
+              </div>
+              <div class="campo">
+                <span>Nome:</span>
+                <input id="nome_input" type="text" placeholder="Seu nome" />
+              </div>
+              <div class="campo">
+                <span>E-mail:</span>
+                <input id="email_input" type="text" placeholder="meuemail@provedor.com" />
+              </div>
+              <div class="campo">
+                <span>Senha:</span>
+                <input id="senha_input" type="password" placeholder="******" />
+              </div>
+              <div class="campo">
+                <span>Confirmação da Senha:</span>
+                <input id="confirmacao_senha_input" type="password" placeholder="******" />
+              </div>
+              <button class="botao" onclick="cadastrar()">Cadastrar</button>
+            </div>
+            <div id="div_aguardar" class="loading-div">
+              <img id="loading-gif" />
+            </div>
+
+            <div id="div_erros_login"></div>
+
+          </div>
+        </div>
 
 
+      </div>
+
+  </div>
+
+
+  <footer>
+
+    <p>©VibeTrack 2025</p>
+    <div>
+      <h2>Desenvolvido por Gabriel Rapani Torres, com o auxilio dos professores (SPtech)</h2>
     </div>
-
-</div>
-
-
-<footer>
-
-  <p>©VibeTrack 2025</p>
-  <div> <h2>Desenvolvido por Gabriel Rapani Torres, com o auxilio dos professores (SPtech)</h2>  </div>
-<p>version 1.0</p>
+    <p>version 1.0</p>
 
 
-</footer>
+  </footer>
 
 </body>
 
