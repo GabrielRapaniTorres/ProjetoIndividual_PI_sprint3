@@ -2,7 +2,8 @@
 <html lang="pt-br">
 
 <head>
-    <link rel="icon" href="../assets/imgs/png-transparent-music-note-music-note-musical-notes-musical-design-symbol-sound-melody-music-notes-v.svg">
+    <link rel="icon"
+        href="../assets/imgs/png-transparent-music-note-music-note-musical-notes-musical-design-symbol-sound-melody-music-notes-v.svg">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="../style.css">
@@ -17,57 +18,117 @@
         rel="stylesheet">
 </head>
 <style>
+    .fundo {
+        background-image: url(../assets/imgs/luxa.org-opacity-changed-._van-gogh-noite-estrelada-sobre-rodano-d.jpg);
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+
+    }
+
+    .janela {
+        color: #cbccd1;
+        align-self: center;
+        display: flex;
+        justify-self: center;
+        padding-top:40px ;
+        padding-left:40px ;
+        width: 80%;
+        overflow: hidden;
+        border-radius: 10px;
+        margin-top: 20px;
+        margin-bottom: 30px;
+        padding-bottom: 30px;
+        padding-top: 20px;
+        background-color: #1a1a2ed8;
+        box-shadow: 5px 2px 8px rgba(5, 7, 37, 0.753);
+    }
+
+    .header-left {
+        width: 20%;
+        height: 100%;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        margin-left: 30px;
+        align-items: center;
+
+        float: left;
+    }
+
+    .header-left h1 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+    }
+
+    .header-left .hello {
+        font-size: 1.2em;
+        margin-bottom: 20px;
+    }
+
+    .header {
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .navbar {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .botao {
+        width: 100%;
+        padding: 3px;
+        font-family: "Cedarville Cursive", cursive;
+        font-weight: 400;
+        font-size: 20px;
+        font-style: normal;
+        background-color: #051120bb;
+        color: #e0e0e0;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        margin-top: 20px;
+    }
+    .dash-right{
+        
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
+        width: 80%;
 
 
-.fundo{
+    }
+    .botao:hover {
+        background-color: #051120;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    }
+    .div-form input{
 
-    background-image: url(../assets/imgs/luxa.org-opacity-changed-._van-gogh-noite-estrelada-sobre-rodano-d.jpg);
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+        width: 500px;
+        height: 30px;
+        border-radius: 8px;
+        border: none;
+        background-color: #051120;
 
-}
-.janela{
-    color: #cbccd1;
-    align-self: center;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    justify-self: center;
-    padding: 40px;
-    width: 80%;
-    height: max-content;
-    border-radius: 10px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    background-color: #1a1a2ed8;
-    box-shadow: 5px 2px 8px rgba(5, 7, 37, 0.753);
-}
-.header-left {
-    width: 30%;
-    padding: 20px;
-    float: left;
-}
-.header-left h1 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-}
-.header-left .hello {
-    font-size: 1.2em;
-    margin-bottom: 20px;
-}
-.header {
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-}
-.navbar {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-}
+    }
+    .div-form textarea{
+        width: 500px;
+        height: 250px;
+        border-radius: 8px;
+        border: none;
+        background-color: #051120;
 
+    }
 </style>
+
 <body onload="validarSessao(), atualizarFeed()">
 
     <div class="fundo">
@@ -101,25 +162,28 @@
                 </ul>
             </div>
         </div>
-    
+
         <div class="janela">
-    
-    
+
+
             <div class="header-left">
-    
-                <h1>VibeTrack</h1>
-    
+
+                <h1
+                    style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+                    Forum | VibeTrack</h1>
+
                 <div class="hello">
                     <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
                 </div>
-    
-    
+
+
             </div>
-    
+
             <div class="dash-right">
-    
-    
-                <div class="avisos">
+
+
+                <div style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;"
+                    class="avisos">
                     <div id="alerta">
                     </div>
                     <div class="container">
@@ -135,11 +199,12 @@
                                 <label>
                                     Descrição (máximo de 250 caracteres):
                                     <br>
-                                    <textarea name="descricao" id="textarea_descricao" maxlength="250" rows="5"></textarea>
+                                    <textarea name="descricao" id="textarea_descricao" maxlength="250"
+                                        rows="5"></textarea>
                                 </label>
                                 <br>
                                 <br>
-                                <button>Enviar</button>
+                                <button class="botao">Enviar</button>
                             </form>
                         </div>
                         <h1>Mural de Avisos</h1>
@@ -250,9 +315,9 @@
                 if (resposta.status == 204) {
                     var feed = document.getElementById("feed_container");
                     var mensagem = document.createElement("span");
-                    mensagem.innerHTML = "Nenhum resultado encontrado."
+                    mensagem.innerHTML = "Forum vazio"
                     feed.appendChild(mensagem);
-                    throw "Nenhum resultado encontrado!!";
+                    throw "Forum vazio";
                 }
 
                 resposta.json().then(function (resposta) {

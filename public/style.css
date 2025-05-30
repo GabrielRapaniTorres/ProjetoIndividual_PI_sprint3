@@ -3,20 +3,13 @@
 body {
     margin: 0;
     font-weight: 400;
-
-    font-family: 'Quicksand', sans-serif;
     background-color: #1a1a2e;
-    /* Dark blue/purple background */
     color: #e0e0e0;
-    /* Light gray text for contrast */
     line-height: 1.6;
 
 }
 
-/* Header */
 .header {
-
-
     background-color: rgba(0, 0, 0, 0.7);
     /* Slightly darker shade for header */
     padding: 5px;
@@ -40,33 +33,28 @@ body {
     color: white;
     font-weight: 400;
     font-style: normal;
-    /* A vibrant blue for the brand name */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .header .navbar {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
     gap: 30px;
-    /* Space out navigation items */
 }
 
 .header .navbar li a {
     color: #e0e0e0;
     text-decoration: none;
-    font-size: 1.1em;
-    font-weight: 500;
+    font-size: 20px;
+    font-weight: 250;
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .header .navbar li a:hover {
-
     color: #1f3a61f6;
-    /* A pop of vibrant red on hover */
-    transform: translateY(-2px);
-    /* Slight lift effect */
 }
 
 .header .navbar li.agora a {
@@ -86,7 +74,7 @@ body {
 }
 
 .login .container {
-    
+
     max-width: 450px;
     width: 100%;
 }
@@ -100,7 +88,8 @@ body {
     border-radius: 15px;
     text-align: center;
 }
-.login span{
+
+.login span {
 
     font-family: 'Courier New', Courier, monospace;
 }
@@ -339,7 +328,7 @@ footer {
 }
 
 #jogo-container {
-    
+
     background-color: #1f2937da;
     padding: 30px 35px;
     border-radius: 12px;
@@ -350,7 +339,7 @@ footer {
 }
 
 #pergunta-container p {
-    
+
     font-family: "Cedarville Cursive", cursive;
     font-weight: 200;
     font-size: 1.2em;
@@ -501,7 +490,7 @@ footer {
 }
 
 .grafico-container {
-    
+
     font-family: "Cedarville Cursive", cursive;
     font-weight: 400;
     font-size: 1.2em;
@@ -519,4 +508,11 @@ footer {
     height: auto;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+.hello{
+    display: flex;
+    font-family: "Cedarville Cursive", cursive;
+    font-weight: 400;
+    font-style: normal;
+
 }
