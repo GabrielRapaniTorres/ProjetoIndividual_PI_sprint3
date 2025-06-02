@@ -222,6 +222,7 @@
         data: {
             labels: ['Rock', 'Sertanejo', 'Classico', 'mpb', 'alternativo', 'Jazz'],
             datasets: [{
+                label:'estilos(p/usuarios)',
                 data: [12, 19, 18, 20, 10, 12],
                 borderColor: [
                     'rgba(255, 99, 132, 1)',
@@ -244,21 +245,4 @@
 
     });
 
-
-    const config = {
-        type: 'bar',
-        data: data,
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'top',
-                },
-                title: {
-                    display: true,
-                    text: 'Chart.js Bar Chart'
-                }
-            }
-        },
-    };
 </script>
