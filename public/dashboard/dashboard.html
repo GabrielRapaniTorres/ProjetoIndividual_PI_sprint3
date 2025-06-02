@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="../style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -62,6 +63,54 @@
         display: flex;
         justify-content: center;
     }
+
+    .grafico {
+        height: 500px;
+        width: 100%;
+        margin-left: 100px;
+        margin-bottom: 40px;
+        width: 40%;
+    }
+
+    .h1Container {
+        font-family: "Cedarville Cursive", cursive;
+        width: 100%;
+        display: flex;
+        font-style: normal;
+        justify-content: center;
+    }
+
+    .dash-cont {
+        width: 90%;
+        display: flex;
+        margin-left: 40px;
+    }
+
+    .graficoUsuarios {
+        justify-self: center;
+        align-self: center;
+        width: 35%;
+        margin-left: 90px;
+    }
+
+    .divKpi {
+
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+    }
+
+    .divKpi div {
+        width: 50px;
+        height: 20px;
+        margin-right: 30px;
+        margin-left: 30px;
+        padding: 20px;
+        background-color: #0a0a20;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        border-radius: 20px;
+
+    }
 </style>
 
 <body>
@@ -96,6 +145,26 @@
             </div>
         </div>
     </div>
+    <div class="h1Container">
+        <h1>Bem vindo a sua pagina da dashboard</h1>
+    </div>
+    <div class="divKpi">
+        <div class="KPI"></div>
+        <div class="KPI"></div>
+    </div>
+
+    <div class="dash-cont">
+
+        <div class="grafico">
+            <canvas id="myChart"></canvas>
+        </div>
+
+        <div class="graficoUsuarios">
+            <canvas id="myChart2"></canvas>
+        </div>
+
+
+    </div>
 
     <footer>
         <p>©VibeTrack 2025</p>
@@ -108,3 +177,88 @@
 </body>
 
 </html>
+
+<script>
+    const ctx = document.getElementById('myChart');
+    const ctx2 = document.getElementById('myChart2');
+
+    new Chart(ctx, {
+
+        type: 'doughnut',
+        data: {
+            labels: ['Erros', 'Acertos'],
+            datasets: [{
+                data: [12, 19],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'total acertos/erros do usuario'
+                }
+            }
+        },
+
+    });
+
+
+    new Chart(ctx2, {
+
+        type: 'bar',
+        data: {
+            labels: ['Rock', 'Sertanejo', 'Classico', 'mpb', 'alternativo', 'Jazz'],
+            datasets: [{
+                data: [12, 19, 18, 20, 10, 12],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)'
+                ],
+                borderWidth: 1
+            }]
+        }, options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'usuarios/genero(musical)'
+                }
+            }
+        },
+
+    });
+
+
+    const config = {
+        type: 'bar',
+        data: data,
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Chart.js Bar Chart'
+                }
+            }
+        },
+    };
+</script>
