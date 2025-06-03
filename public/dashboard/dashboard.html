@@ -17,7 +17,6 @@
         background-size: cover;
         background-position: center;
         background-attachment: fixed;
-
     }
 
     .janela {
@@ -95,7 +94,6 @@
     }
 
     .divKpi {
-
         display: flex;
         justify-content: center;
         flex-direction: row;
@@ -103,8 +101,10 @@
     }
 
     .divKpi div {
-        width: 70px;
-        height: 30px;
+        width: max-content;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 15px;
+        height: max-content;
         margin-right: 40px;
         margin-left: 40px;
         padding: 20px;
@@ -152,12 +152,18 @@
     </div>
     <div class="divKpi">
         <div class="KPI"></div>
-        <div class="KPI"></div>
     </div>
 
     <div class="dash-cont">
 
         <div class="grafico">
+            <div style="text-align:center; margin-bottom: 20px;">
+                <label for="filtroGrafico">Visualizar:</label>
+                <select id="filtroGrafico" onchange="atualizarGraficoGeral()">
+                    <option value="usuario">Meus resultados</option>
+                    <option value="geral">Média dos usuários</option>
+                </select>
+            </div>
             <canvas id="myChart"></canvas>
         </div>
 
@@ -181,69 +187,159 @@
 </html>
 
 <script>
-    const ctx = document.getElementById('myChart');
-    const ctx2 = document.getElementById('myChart2');
+    async function atualizarGraficoGeral() {
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const filtro = document.getElementById('filtroGrafico')?.value || 'usuario';
+        let acertos = 0, erros = 0;
 
-    new Chart(ctx, {
-
-        type: 'doughnut',
-        data: {
-            labels: ['Erros', 'Acertos'],
-            datasets: [{
-                data: [12, 19],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'top',
-                },
-                title: {
-                    display: true,
-                    text: 'total acertos/erros do usuario'
-                }
+        if (filtro === 'usuario') {
+            const idUsuario = sessionStorage.ID_USUARIO || localStorage.ID_USUARIO;
+            if (!idUsuario) {
+                console.error("Usuário não logado!");
+                return;
             }
-        },
+            const resposta = await fetch(`/quiz/estatisticas-usuario/${idUsuario}`);
+            const dados = await resposta.json();
+            dados.forEach(item => {
+                if (item.correta === 1) acertos = item.quantidade;
+                else erros = item.quantidade;
+            });
 
-    });
-
-
-    new Chart(ctx2, {
-
-        type: 'bar',
-        data: {
-            labels: ['Rock', 'Sertanejo', 'Classico', 'mpb', 'alternativo', 'Jazz'],
-            datasets: [{
-                label:'estilos(p/usuarios)',
-                data: [12, 19, 18, 20, 10, 12],
-                borderColor: [
-                    'rgba(54, 162, 235, 1)'
-                ],
-                borderWidth: 1
-            }]
-        }, options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'top',
-                },
-                title: {
-                    display: true,
-                    text: 'usuarios/genero(musical)'
-                }
+            const kpiDivs = document.querySelectorAll('.KPI');
+            if (kpiDivs[0]) {
+                kpiDivs[0].innerHTML = `<b>Acertos:</b> ${acertos} <br> <b>Erros:</b> ${erros}`;
             }
-        },
 
-    });
+            if (window.myChartInstance) window.myChartInstance.destroy();
 
+            window.myChartInstance = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Erros', 'Acertos'],
+                    datasets: [{
+                        data: [erros, acertos],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { position: 'top' },
+                        title: { display: true, text: 'Seus acertos/erros' }
+                    }
+                }
+            });
+        } else {
+            const idUsuario = sessionStorage.ID_USUARIO || localStorage.ID_USUARIO;
+            if (!idUsuario) {
+                console.error("Usuário não logado!");
+                return;
+            }
+
+            let acertosUsuario = 0;
+            try {
+                const respostaUsuario = await fetch(`/quiz/estatisticas-usuario/${idUsuario}`);
+                const dadosUsuario = await respostaUsuario.json();
+                dadosUsuario.forEach(item => {
+                    if (item.correta === 1) acertosUsuario = item.quantidade;
+                });
+            } catch (error) {
+                console.error("Erro ao buscar acertos do usuário:", error);
+            }
+
+            let acertosGeral = 0;
+            try {
+                const respostaGeral = await fetch(`/quiz/estatisticas-geral`);
+                const dadosGeral = await respostaGeral.json();
+                dadosGeral.forEach(item => {
+                    if (item.correta === 1) acertosGeral = item.quantidade;
+                });
+            } catch (error) {
+                console.error("Erro ao buscar acertos gerais:", error);
+            }
+
+            const acertosOutros = Math.max(acertosGeral - acertosUsuario, 0);
+
+
+
+            if (window.myChartInstance) window.myChartInstance.destroy();
+
+            window.myChartInstance = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Outros usuários', 'Você'],
+                    datasets: [{
+                        data: [acertosOutros, acertosUsuario],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { position: 'top' },
+                        title: { display: true, text: 'Sua participação nos acertos da comunidade' }
+                    }
+                }
+            });
+        }
+    }
+    async function atualizarGraficoEstilos() {
+        const ctx2 = document.getElementById('myChart2').getContext('2d');
+        let estiloUsuario = null;
+
+        try {
+            estiloUsuario = sessionStorage.ESTILO_USUARIO || localStorage.ESTILO_USUARIO;
+        } catch (e) {
+            estiloUsuario = null;
+        }
+
+        try {
+            const resposta = await fetch('/usuarios/usuarios-por-estilo');
+            const dados = await resposta.json();
+            const labels = dados.map(batata => batata.estilo);
+            const valores = dados.map(batata => batata.quantidade);
+
+
+            new Chart(ctx2, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'estilos(p/usuarios)',
+                        data: valores,
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { display: false },
+                        title: { display: true, text: 'usuarios/genero(musical)' }
+                    }
+                }
+            });
+        } catch (error) {
+            console.error("Erro ao buscar usuários por estilo:", error);
+        }
+    }
+
+    atualizarGraficoGeral();
+    atualizarGraficoEstilos();
 </script>
