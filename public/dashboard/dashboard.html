@@ -304,12 +304,6 @@
         let estiloUsuario = null;
 
         try {
-            estiloUsuario = sessionStorage.ESTILO_USUARIO || localStorage.ESTILO_USUARIO;
-        } catch (e) {
-            estiloUsuario = null;
-        }
-
-        try {
             const resposta = await fetch('/usuarios/usuarios-por-estilo');
             const dados = await resposta.json();
             const labels = dados.map(batata => batata.estilo);
@@ -332,6 +326,15 @@
                     plugins: {
                         legend: { display: false },
                         title: { display: true, text: 'usuarios/genero(musical)' }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 1,
+                                precision: 0
+                            }
+                        }
                     }
                 }
             });
