@@ -161,7 +161,8 @@
                 <label for="filtroGrafico">Visualizar:</label>
                 <select id="filtroGrafico" onchange="atualizarGraficoGeral()">
                     <option value="usuario">Meus resultados</option>
-                    <option value="geral">Média dos usuários</option>
+                    <option value="geral">Acertos da comunidade</option>
+                    <option value="errosCom">Erros na comunidade</option>
                 </select>
             </div>
             <canvas id="myChart"></canvas>
@@ -294,6 +295,69 @@
                     plugins: {
                         legend: { position: 'top' },
                         title: { display: true, text: 'Sua participação nos acertos da comunidade' }
+                    }
+                }
+            });
+        }
+        if (filtro === 'usuario') {
+            // ...já existente...
+        } else if (filtro === 'geral') {
+            // ...já existente...
+        } else if (filtro === 'errosCom') {
+            const idUsuario = sessionStorage.ID_USUARIO || localStorage.ID_USUARIO;
+            if (!idUsuario) {
+                console.error("Usuário não logado!");
+                return;
+            }
+
+            let errosUsuario = 0;
+            try {
+                const respostaUsuario = await fetch(`/quiz/estatisticas-usuario/${idUsuario}`);
+                const dadosUsuario = await respostaUsuario.json();
+                dadosUsuario.forEach(item => {
+                    if (item.correta === 0) errosUsuario = item.quantidade;
+                });
+            } catch (error) {
+                console.error("Erro ao buscar erros do usuário:", error);
+            }
+
+            let errosGeral = 0;
+            try {
+                const respostaGeral = await fetch(`/quiz/estatisticas-geral`);
+                const dadosGeral = await respostaGeral.json();
+                dadosGeral.forEach(item => {
+                    if (item.correta === 0) errosGeral = item.quantidade;
+                });
+            } catch (error) {
+                console.error("Erro ao buscar erros gerais:", error);
+            }
+
+            const errosOutros = Math.max(errosGeral - errosUsuario, 0);
+
+            if (window.myChartInstance) window.myChartInstance.destroy();
+
+            window.myChartInstance = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Outros usuários', 'Você'],
+                    datasets: [{
+                        data: [errosOutros, errosUsuario],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { position: 'top' },
+                        title: { display: true, text: 'Sua participação nos erros da comunidade' }
                     }
                 }
             });
