@@ -306,9 +306,7 @@
                 }
             });
         }
-        if (filtro === 'usuario') {
-        } else if (filtro === 'geral') {
-        } else if (filtro === 'errosCom') {
+       if (filtro === 'errosCom') {
             const idUsuario = sessionStorage.ID_USUARIO || localStorage.ID_USUARIO;
             if (!idUsuario) {
                 console.error("Usuário não logado!");
