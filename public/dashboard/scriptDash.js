@@ -1,9 +1,11 @@
 async function atualizarGraficoGeral() {
     const ctx = document.getElementById('myChart').getContext('2d');
-    const filtro = document.getElementById('filtroGrafico')?.value || 'usuario';
+    const filtro = document.getElementById('filtroGrafico').value;
     let acertos = 0, erros = 0;
 
-    if (filtro === 'usuario') {
+    // filtro de acertos do usuario
+
+    if (filtro == 'usuario') {
         const idUsuario = sessionStorage.ID_USUARIO || localStorage.ID_USUARIO;
         if (!idUsuario) {
             console.error("Usuário não logado!");
@@ -12,7 +14,7 @@ async function atualizarGraficoGeral() {
         const resposta = await fetch(`/quiz/estatisticas-usuario/${idUsuario}`);
         const dados = await resposta.json();
         dados.forEach(item => {
-            if (item.correta === 1) acertos = item.quantidade;
+            if (item.correta == 1) acertos = item.quantidade;
             else erros = item.quantidade;
         });
 
@@ -48,7 +50,10 @@ async function atualizarGraficoGeral() {
                 }
             }
         });
-    } else {
+
+        // filtro geral de acertos da comunidade + acertos do usuario
+
+    } else if (filtro == 'geral') {
         const idUsuario = sessionStorage.ID_USUARIO || localStorage.ID_USUARIO;
         if (!idUsuario) {
             console.error("Usuário não logado!");
@@ -60,7 +65,7 @@ async function atualizarGraficoGeral() {
             const respostaUsuario = await fetch(`/quiz/estatisticas-usuario/${idUsuario}`);
             const dadosUsuario = await respostaUsuario.json();
             dadosUsuario.forEach(item => {
-                if (item.correta === 1) acertosUsuario = item.quantidade;
+                if (item.correta == 1) acertosUsuario = item.quantidade;
             });
         } catch (error) {
             console.error("Erro ao buscar acertos do usuário:", error);
@@ -71,7 +76,7 @@ async function atualizarGraficoGeral() {
             const respostaGeral = await fetch(`/quiz/estatisticas-geral`);
             const dadosGeral = await respostaGeral.json();
             dadosGeral.forEach(item => {
-                if (item.correta === 1) acertosGeral = item.quantidade;
+                if (item.correta == 1) acertosGeral = item.quantidade;
             });
         } catch (error) {
             console.error("Erro ao buscar acertos gerais:", error);
@@ -108,8 +113,10 @@ async function atualizarGraficoGeral() {
                 }
             }
         });
-    }
-    if (filtro === 'errosCom') {
+
+        // filtro de erros da comunidade + erros do usuario 
+
+    } else if (filtro == 'errosCom') {
         const idUsuario = sessionStorage.ID_USUARIO || localStorage.ID_USUARIO;
         if (!idUsuario) {
             console.error("Usuário não logado!");
@@ -121,7 +128,7 @@ async function atualizarGraficoGeral() {
             const respostaUsuario = await fetch(`/quiz/estatisticas-usuario/${idUsuario}`);
             const dadosUsuario = await respostaUsuario.json();
             dadosUsuario.forEach(item => {
-                if (item.correta === 0) errosUsuario = item.quantidade;
+                if (item.correta == 0) errosUsuario = item.quantidade;
             });
         } catch (error) {
             console.error("Erro ao buscar erros do usuário:", error);
@@ -132,7 +139,7 @@ async function atualizarGraficoGeral() {
             const respostaGeral = await fetch(`/quiz/estatisticas-geral`);
             const dadosGeral = await respostaGeral.json();
             dadosGeral.forEach(item => {
-                if (item.correta === 0) errosGeral = item.quantidade;
+                if (item.correta == 0) errosGeral = item.quantidade;
             });
         } catch (error) {
             console.error("Erro ao buscar erros gerais:", error);
@@ -171,12 +178,15 @@ async function atualizarGraficoGeral() {
 }
 async function atualizarGraficoEstilos() {
     const ctx2 = document.getElementById('myChart2').getContext('2d');
-    const filtro = document.getElementById('filtroEstilo')?.value || "usuarios";
+    const filtro = document.getElementById('filtroEstilo').value || "usuarios";
 
     // Destroi o gráfico anterior, se existir
+
     if (window.myChart2Instance) window.myChart2Instance.destroy();
 
-    if (filtro === "usuarios") {
+    // filtro de quantos usuarios estão logados 
+
+    if (filtro == "usuarios") {
         try {
             const resposta = await fetch('/usuarios/usuarios-por-estilo');
             const dados = await resposta.json();
@@ -214,7 +224,11 @@ async function atualizarGraficoEstilos() {
         } catch (error) {
             console.error("Erro ao buscar usuários por estilo:", error);
         }
-    } else if (filtro === "acertos") {
+
+
+        // filtro de acertos por estilo(ranking)
+
+    } else if (filtro == "acertos") {
         try {
             const resposta = await fetch('/quiz/acertos-por-estilo');
             const dados = await resposta.json();
