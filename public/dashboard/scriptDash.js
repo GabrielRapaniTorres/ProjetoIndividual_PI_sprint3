@@ -6,7 +6,7 @@ async function atualizarGraficoGeral() {
     // filtro de acertos do usuario
 
     if (filtro == 'usuario') {
-        const idUsuario = sessionStorage.ID_USUARIO || localStorage.ID_USUARIO;
+        const idUsuario = sessionStorage.ID_USUARIO;
         if (!idUsuario) {
             console.error("Usuário não logado!");
             return;
