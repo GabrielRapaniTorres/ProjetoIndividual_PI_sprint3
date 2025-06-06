@@ -54,7 +54,7 @@ async function atualizarGraficoGeral() {
         // filtro geral de acertos da comunidade + acertos do usuario
 
     } else if (filtro == 'geral') {
-        const idUsuario = sessionStorage.ID_USUARIO || localStorage.ID_USUARIO;
+        const idUsuario = sessionStorage.ID_USUARIO;
         if (!idUsuario) {
             console.error("Usuário não logado!");
             return;
@@ -117,7 +117,7 @@ async function atualizarGraficoGeral() {
         // filtro de erros da comunidade + erros do usuario 
 
     } else if (filtro == 'errosCom') {
-        const idUsuario = sessionStorage.ID_USUARIO || localStorage.ID_USUARIO;
+        const idUsuario = sessionStorage.ID_USUARIO;
         if (!idUsuario) {
             console.error("Usuário não logado!");
             return;
