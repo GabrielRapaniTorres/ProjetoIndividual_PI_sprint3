@@ -95,7 +95,7 @@ function verificarResposta(respostaSelecionadaIndex) {
     } else {
         respostaBotoes[respostaSelecionadaIndex].classList.add('incorreta');
         respostaBotoes[respostaCorretaIndex].classList.add('correta');
-        feedbackMensagem.textContent = "Que pena! A resposta correta era: \"" + perguntaAtual.respostas[respostaCorretaIndex] + "\".";
+        feedbackMensagem.textContent = `Que pena! A resposta correta era: ${perguntaAtual.respostas[respostaCorretaIndex]}`;
     }
 
     for (let i = 0; i < respostaBotoes.length; i++) {
